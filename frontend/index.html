@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Children Bedtime Stories — MVP</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width:700px; margin:24px auto; padding:0 16px; color:#222; }
+    header { text-align:center; margin-bottom:18px; }
+    .story { border:1px solid #eee; padding:12px; margin-bottom:12px; border-radius:8px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    h2 { margin:0 0 6px 0; font-size:18px; }
+    p.blurb { margin:0 0 8px 0; color:#555; }
+    audio { width:100%; outline:none; }
+    footer { font-size:13px; color:#666; text-align:center; margin-top:20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Children Bedtime Stories — MVP</h1>
+    <p>Simple demo. Click Play to listen. (Replace the MP3 files in <code>audio_generated/</code>)</p>
+  </header>
+
+  <main>
+    <section class="story" id="story1">
+      <h2>Story 1 — The Brave Little Sparrow</h2>
+      <p class="blurb">A short tale about kindness and courage. (~2–3 minutes)</p>
+      <audio controls>
+        <source src="../audio_generated/story1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <p><small>Download: <a href="../audio_generated/story1.mp3" download>story1.mp3</a></small></p>
+    </section>
+
+    <section class="story" id="story2">
+      <h2>Story 2 — The Wise Banyan Tree</h2>
+      <p class="blurb">A gentle story about patience and friendship. (~2–4 minutes)</p>
+      <audio controls>
+        <source src="../audio_generated/story2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <p><small>Download: <a href="../audio_generated/story2.mp3" download>story2.mp3</a></small></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Admin: add new stories to <code>story_scripts/</code> and upload audio to <code>audio_generated/</code>.</p>
+  </footer>
+</body>
+</html>
