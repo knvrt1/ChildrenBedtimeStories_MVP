@@ -10,14 +10,16 @@
     .story { border:1px solid #eee; padding:12px; margin-bottom:12px; border-radius:8px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
     h2 { margin:0 0 6px 0; font-size:18px; }
     p.blurb { margin:0 0 8px 0; color:#555; }
-    audio { width:100%; outline:none; }
+    audio { width:100%; outline:none; margin-top:10px; }
+    label { font-weight:bold; }
+    select { padding:6px; margin-top:4px; margin-bottom:10px; width:100%; font-size:15px; }
     footer { font-size:13px; color:#666; text-align:center; margin-top:20px; }
   </style>
 </head>
 <body>
   <header>
     <h1>Children Bedtime Stories — MVP</h1>
-    <p>Simple demo. Click Play to listen. (Replace the MP3 files in <code>audio_generated/</code>)</p>
+    <p>Now with multi-voice selection 🎙️ — choose your favorite voice below.</p>
   </header>
 
   <main>
@@ -26,21 +28,15 @@
       <h2>Story 1 — The Brave Little Sparrow</h2>
       <p class="blurb">A short tale about kindness and courage. (~2–3 minutes)</p>
 
-      <h4>Sahithi’s Voice</h4>
-      <audio controls>
-        <source src="audio_generated/story1_sahithi.mp3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+      <label for="voiceSelect">Choose a Voice:</label>
+      <select id="voiceSelect" onchange="changeVoice(this.value)">
+        <option value="sahithi">Sahithi’s Voice</option>
+        <option value="mother">Mother’s Voice</option>
+        <option value="father">Father’s Voice</option>
+      </select>
 
-      <h4>Mother’s Voice</h4>
-      <audio controls>
-        <source src="audio_generated/story1_mother.mp3.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-
-      <h4>Father’s Voice</h4>
-      <audio controls>
-        <source src="audio_generated/story1_father.mp3.mp3" type="audio/mpeg">
+      <audio id="audioPlayer" controls>
+        <source id="audioSource" src="audio_generated/story1_sahithi.mp3.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
 
@@ -56,5 +52,24 @@
   <footer>
     <p>Admin: add new stories to <code>story_scripts/</code> and upload audio to <code>audio_generated/</code>.</p>
   </footer>
+
+  <script>
+    function changeVoice(selectedVoice) {
+      const audioPlayer = document.getElementById('audioPlayer');
+      const audioSource = document.getElementById('audioSource');
+
+      // Define available voices and their audio files
+      const voices = {
+        sahithi: "audio_generated/story1_sahithi.mp3.mp3",
+        mother: "audio_generated/story1_mother.mp3.mp3",
+        father: "audio_generated/story1_father.mp3.mp3"
+      };
+
+      // Update audio source
+      audioSource.src = voices[selectedVoice];
+      audioPlayer.load();
+      audioPlayer.play();
+    }
+  </script>
 </body>
 </html>
